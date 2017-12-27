@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<?php include_once('connectdb.php');?>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ระบบจองห้องพัก</title>
+    <meta name="description" content="Free Bootstrap Theme by ProBootstrap.com">
+    <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Pinyon+Script" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles-merged.css">
+    <link rel="stylesheet" href="css/style.min.css">
+  </head>
+  <body>
+    
+    <!-- Fixed navbar -->
+    
+    <nav class="navbar navbar-default navbar-fixed-top probootstrap-navbar">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html" title="ProBootstrap:FineOak">FineOak</a>
+        </div>
+<?php
+
+?>
+        <div id="navbar-collapse" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="index.html" >Welcome</a></li>
+            <li><a href="#" data-nav-section="reservation">Booking</a></li>
+            <li><a href="#" data-nav-section="events">*****</a></li>
+            <li><a href="#" data-nav-section="contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+<?php 
+$checkin = $_REQUEST['checkin'];
+$checkout = $_REQUEST['checkout'];
+$people = $_REQUEST['people'];
+?>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 ">
+
+            
+            <div class="col-md-1" >
+            Checkin
+            </div>
+                <div class="col-md-2" >
+                      <input type="text"  name="checkin" class="form-control " value="<?php echo $checkin; ?>"readonly> 
+                </div>
+                <div class="col-md-1" >
+            Checkout
+            </div>
+                <div class="col-md-2" >
+                 <input type="text"  name="checkin" class="form-control " value="<?php echo $checkout; ?>"readonly> 
+                </div>
+                <div class="col-md-1" >
+                people
+            </div>
+                <div class="col-md-2" >
+                <input type="text"  name="checkin" class="form-control " value="<?php echo $people; ?>"readonly> 
+                </div>
+                <div class="col-md-1" >
+            
+            </div>
+                <div class="col-md-2" >
+                 <button class="btn btn-sm btn-danger">Edit time </button>
+                </div>
+               
+               
+             
+          
+        </div>
+      </div>
+    </nav>
+
+   
+
+  <section class="probootstrap-section-bg overlay" style="background-image: url(img/76156231.jpg);"  data-stellar-background-ratio="0.5" data-section="events">
+      <div class="container">
+      </section>
+      <section class="probootstrap-section probootstrap-bg-white" data-section="reservation">
+    <div class="container">
+
+
+<?php   $sql = ( "SELECT * FROM room " );
+	$res = mysqli_query( $con, $sql );
+	while ( $r = mysqli_fetch_assoc( $res ) ) { ?>
+    
+    
+
+    <div class="col-md-12">
+          <div class="col-md-7 col-sm-7 probootstrap-animate">
+            <div class="probootstrap-block-image">
+              <figure><a href="room.php"><img src="img/Room1.jpg" alt="Free Bootstrap Template by ProBootstrap.com"></figure>
+              <div class="text">
+                <span class="date"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-5 col-sm-5 probootstrap-animate">
+
+              <div class="text" style="text-align:center;">
+                <span class="date"></span>
+                <h3><a href="room.php"><?php echo $r[ 'name_room' ];?></a></h3>
+                </span>
+                <h3><?php echo $r[ 'detail_room' ];?></h3>
+                <?php
+                  if($r[ 'balance_room' ]==0){ ?>
+                    <a  role="button"class="btn btn-lg btn-danger">sold out</a>
+                 <?php   echo "เต็ม";
+                  }else { ?>
+                  <a href="booking.php?idroom=<?php echo $r[ 'ID_room' ]."&checkin=".$checkin."&checkout=".$checkout."&people=".$people;?>" role="button"class="btn btn-lg btn-danger">Book Now &nbsp;<?php echo $r[ 'price_room' ];?>&nbsp;THB</a>
+                <?php        
+                  }
+                 ?>
+                
+              </div>
+            </div>
+          </div>
+         <p>
+
+
+
+          
+<?php }?>
+
+        </div>
+      </div>
+    </section>
+
+
+    
+    <script src="js/scripts.min.js"></script>
+    <script src="js/custom.min.js"></script>
+
+  </body>
+</html>

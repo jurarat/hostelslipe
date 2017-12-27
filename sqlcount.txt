@@ -1,0 +1,19 @@
+SELECT
+    COUNT(ID_room) AS t1,
+(
+SELECT COUNT(ID_room) FROM  booking WHERE checkin BETWEEN '2018-01-02' AND '2018-01-05' AND booking.ID_room = 2) AS t2,
+(
+SELECT COUNT(ID_room) FROM  booking WHERE checkin BETWEEN '2018-01-02' AND '2018-01-05' AND booking.ID_room = 3) AS t3 ,
+(
+SELECT COUNT(ID_room)FROM  booking WHERE checkin BETWEEN '2018-01-02' AND '2018-01-05' AND booking.ID_room = 4) AS t4 ,
+(
+SELECT  COUNT(ID_room)FROM booking WHERE checkin BETWEEN '2018-01-02' AND '2018-01-05' AND booking.ID_room = 5) AS t5 ,
+(
+SELECT COUNT(ID_room) FROM booking WHERE checkin BETWEEN '2018-01-02' AND '2018-01-05' AND booking.ID_room = 6) AS t6 ,
+(
+SELECT COUNT(ID_room)FROM booking WHERE checkin BETWEEN '2018-01-02' AND '2018-01-05' AND booking.ID_room = 7) AS t7 ,
+(
+SELECT COUNT(ID_room)FROM booking WHERE checkin BETWEEN '2018-01-02' AND '2018-01-05' AND booking.ID_room = 8) AS t8 ,
+(
+SELECT COUNT(ID_room)FROM booking WHERE checkin BETWEEN '2018-01-02' AND '2018-01-05' AND booking.ID_room = 9) AS t9
+FROM    booking WHERE    checkin BETWEEN '2018-01-02' AND '2018-01-05' AND booking.ID_room = 1
